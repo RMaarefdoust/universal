@@ -18,7 +18,7 @@
 
 The goal of the Universal Numbers Library is to offer alternatives to native integer and floating-point for mixed-precision algorithm development and optimization. Tailoring the arithmetic types to the application's precision and dynamic range enables a new level of application performance and energy efficiency, particularly valuable for embedded applications that need autonomy through intelligent behavior.
 
-Deep Learning algorithms in particular provide a core application vertical where alternative formats and precisions, such as half-precision floating-point and bfloat16, yield speed-ups of two to three orders of magnitude, making rapid innovation in AI possible.
+Deep Learning algorithms provide a core application vertical where alternative formats and precisions, such as half-precision floating-point and bfloat16, yield speed-ups of two to three orders of magnitude, making rapid innovation in AI possible.
 
 The Universal Library is a ready-to-use header-only library that provides a plug-in replacement for native types and offers a low-friction environment to explore alternatives to IEEE-754 floating-point in AI, DSP, HPC, and HFT algorithms.
 
@@ -29,7 +29,7 @@ The basic use pattern is as simple as:
 // a fixed-sized, arbitrary configuration classic floating-point
 #include <universal/number/cfloat/cfloat.hpp>
 
-// define your computational kernel parameterized by arithmitic type
+// define your computational kernel parameterized by arithmetic type
 template<typename Real>
 Real MyKernel(const Real& a, const Real& b) {
     return a * b;  // replace this with your kernel computation
@@ -92,7 +92,7 @@ Please cite [our work](https://arxiv.org/abs/2012.11011) if you use *Universal*.
 
 ## Talks and Presentations
 
-The following presentations describe *Universal* and the number systems it contained as of the time of publication.
+The following presentations describe *Universal* and the number systems it contained at the time of publication.
 
 Slides of a presentation at [FPTalks'21](https://fpbench.org/talks/fptalks21.html)
 
@@ -106,7 +106,7 @@ A quick description of the structure of the number system parameterization can b
 
 ## Quick start
 
-If you just want to experiment with the number system tools and test suites and don't want to bother cloning and building the source code, there is a Docker container to get started:
+If you want to experiment with the number system tools and test suites and don't want to bother cloning and building the source code, there is a Docker container to get started:
 
 ```text
 > docker pull stillwater/universal
@@ -121,10 +121,10 @@ CTestTestfile.cmake  c_api         education              tools       universal-
 
 ## How to build
 
-If you do want to work with the code, the universal numbers software library is built using cmake version v3.23. 
+If you want to work with the code, the universal numbers software library is built using `cmake` version v3.23. 
 Install the latest [cmake](https://cmake.org/download).
 There are interactive installers for MacOS and Windows. 
-For Linux, a portable approach downloads the shell archive and installs it at /usr/local:
+For Linux, a portable approach downloads the shell archive and installs it at `/usr/local`:
 
 ```text
 > wget https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1-Linux-x86_64.sh 
@@ -142,11 +142,9 @@ even for the regression test suites to enable hassle-free installation and use.
 
 Clone the GitHub repo, and you are ready to build the different components of the Universal library.  
 The library contains tools for using integers, decimals, fixed-points, floats, posits, valids, and logarithmic
-number systems. It includes educational programs that showcase simple use cases to familiarize yourself with
-different number systems and application examples to highlight the use of other number systems to gain performance
-or numerical accuracy. Finally, each number system offers its own verification suite. 
+number systems. It includes educational programs that showcase simple use cases to familiarize yourself with different number systems and application examples to highlight the use of other number systems to gain performance or numerical accuracy. Finally, each number system offers its verification suite. 
 
-The easiest way to become familiar with all the options in the build process is to fire up the CMake GUI (or ccmake if you are on a headless server). The CMake output will summarize which options have been set.  
+The easiest way to familiarize yourself with all the options in the build process is to fire up the CMake GUI (or cmake if you are on a headless server). The CMake output summarizes which options have been set.  
 The output will look something like this:
 
 ```text
@@ -313,7 +311,7 @@ $ cmake ..
 
 As you can see in the cmake output there are many build targets. Each build target is designed to provide
 focus and fast build turnarounds when working with different number systems. Each number system has its
-own build target allowing fast and efficient regression testing.
+build target, allowing fast and efficient regression testing.
 
 The build options are enabled/disabled as follows:
 
@@ -321,8 +319,7 @@ The build options are enabled/disabled as follows:
 > cmake -DBUILD_EDUCATION=OFF -DBUILD_NUMBER_POSITS=ON ..
 ```
 
-After building, issue the command _make test_ to run the complete test suite of all the enabled components, 
-as a regression capability when you are modifying the source code. This will take touch all the corners of the code.
+After building, issue the command _make test_ to run the complete test suite of all the enabled components as a regression capability when modifying the source code. This will touch all the corners of the code.
 
 ```text
 > git clone https://github.com/stillwater-sc/universal
@@ -346,21 +343,21 @@ Here is the layout of all the projects contained in V3.68 of Universal:
 
 ![visual-studio-project](docs/img/visual-studio-project.png)
 
-In the *Applications* section, you will find application examples to demonstrate the use of Universal 
+In the *Applications* section, you will find application examples to demonstrate using Universal 
 arithmetic types to accomplish different numerical goals, such as reproducibility, accuracy, performance,
-or precision. These examples are great starting points for your own application requirements.
+or precision. These examples are great starting points for your application requirements.
 
 ![example-applications](docs/img/example-applications.png)
 
 ## How to develop and extend *Universal*
 
-The *Universal* library contains hundreds of example programs to demonstrate the use of the arithmetic types and the enable new developers to get up to speed. In each number system type's regression suite there is an `api/api.cpp` that chronicles all the invokation and use cases to provide an executable example of how to use the type. In general, the api section of the regression tests has code examples how to use the different library components, such as manipulators, attributes, number traits, exceptions, and special cases. 
+The *Universal* library contains hundreds of example programs to demonstrate the use of the arithmetic types and enable new developers to get up to speed. In each number system type's regression suite there is an `api/api.cpp` that chronicles all the invocation and use cases to provide an executable example of how to use the type. In general, the api section of the regression tests has code examples of using the different library components, such as manipulators, attributes, number traits, exceptions, and special cases. 
 
-In the `education` build target (BUILD_EDUCATION), there are individual test programs that demonstrate how to use the different types.
+In the `education` build target (BUILD_EDUCATION), individual test programs demonstrate how to use the different types.
 
 The `docs` directory contains the descriptions of the [command line tools](docs/command-line-tools.md), a [tutorial](docs/number-system-type-parameterization.md) explaining the parameterization design of the arithmetic types in *Universal*, several conference presentations, [FPTalks](docs/presentations/fptalks-custom-number-systems.pdf) and [CoNGA22](docs/presentations/conga22-universal-arithmetic-library.pdf), describing the arithmetic types. The `docs` directory also contains ready-to-use value tables and dynamic range comparisons of many key small arithmetic types of interest in AI and DSP applications.
 
-Each number system comes with a complete regression suite to verify the functionality of assignment, conversion, arithmetic, logic, exceptions, number traits, and special cases. These regression suites are run for each PR or push to the version branch. *Universal* uses standard GitHub Actions for this, so add your branch to the workflow cmake yaml to trigger CI for your own branch.
+Each number system has a complete regression suite to verify the functionality of assignment, conversion, arithmetic, logic, exceptions, number traits, and special cases. These regression suites are run for each PR or push to the version branch. *Universal* uses standard GitHub Actions for this, so add your branch to the workflow cmake yaml to trigger CI for your own branch.
 
 The easiest way to get started is to pick up and copy the directory structure under `ROOT/include/universal/number/skeleton_1param` or `ROOT/include/universal/number/skeleton_2params`. They are configured to get you all the constituent pieces of a number system *Universal*-style.
 
@@ -402,14 +399,14 @@ target_link_libraries(${PROJECT_NAME} universal::universal)
 ## Controlling the build to include different components
 
 The default build configuration will build the command line tools, a playground, educational and 
-application examples. If you want to build the full regression suite across all the number systems, 
+application examples. If you want to develop the full regression suite across all the number systems, 
 use the following cmake command:
 
 ```text
 cmake -DBUILD_ALL=ON ..
 ```
 
-For performance, the build configuration can enable specific x86 instruction sets (SSE/AVX/AVX2). 
+The build configuration can enable specific x86 instruction sets (SSE/AVX/AVX2) for performance. 
 For example, if your processor supports the AVX2 instruction set, you can build the test suites 
 and educational examples with the AVX2 flag turned on. This typically yields a 20% performance boost.
 
@@ -418,7 +415,7 @@ cmake -DBUILD_ALL=on -DUSE_AVX2=ON ..
 ```
 
 The library builds a set of useful command utilities to inspect native IEEE float/double/long double 
-types, as well as the custom number systems provided by Universal. Assuming you have build and 
+types, as well as the custom number systems provided by Universal. Assuming you have built and 
 installed the library, the inspection commands available are:
 
 ```text
@@ -515,27 +512,26 @@ The fields are prefixed by their first characters, for example, "posit<16,2> = s
 -   exponent field = e00, indicates two bits of exponent, both 0
 -   fraction field = f00111100000, a full set of fraction bits
 
-The field values are followed by a quadrant descriptor and a value representation in decimal:
+A quadrant descriptor and a value representation in decimal follow the field values:
 
 -   qNE            = North-East Quadrant, representing a number in the range "[1, maxpos]"
 -   v1.234375      = the value representation of the posit projection
 
 
-The positive regime for a posit shows a very specific structure, as can be seen in the image blow:
+The positive regime for a posit shows a particular structure, as can be seen in the image below:
 ![regime structure](docs/img/positive_regimes.png)
 
-## Leveraging the *Universal* library in your own mixed-precision algorithm research
+## Leveraging the *Universal* library in your mixed-precision algorithm research
 
-To bootstrap any new mixed-precision algorithm development and optimization project quickly and robustly, there is a github template repo available that will set up a complete working development environment with dependent libraries, development containers, VS Code integration, and a Github CI workflow. The template repo can be found at [mpadao-template](https://github.com/stillwater-sc/mpadao-template). 
+To bootstrap any new mixed-precision algorithm development and optimization project quickly and robustly, there is a GitHub template repo available that will set up a complete working development environment with dependent libraries, development containers, VS Code integration, and a Github CI workflow. The template repo can be found at [mpadao-template](https://github.com/stillwater-sc/mpadao-template). 
 
-The template repo is the easiest way to get started with mixed-precision algorithm development using *Universal*.
+The template repo is the easiest way to start with mixed-precision algorithm development using *Universal*.
 
 ## Motivation
 
-Modern Deep Learning AI applications are very demanding high-performance applications. Runtimes to train
-models are measured in terms of weeks, and target latencies for inference are 10-100msec. Standard
-double, and even single, precision IEEE-754 floating-point have been too expensive to use in addressing the 
-performance and power requirements of AI applications in both the cloud and the edge.
+Modern deep learning AI applications are very demanding and high-performance. Runtimes to train
+models are measured in weeks, and target latencies for inference are 10-100msec. Standard
+double and even single precision IEEE-754 floating-point have been too expensive to address the performance and power requirements of AI applications in both the cloud and the edge.
 Both Google and Microsoft have jettisoned traditional floating-point formats for their AI cloud services 
 to gain two orders of magnitude better performance. Similarly, AI applications for mobile and embedded 
 applications are requantized to small integers to fit their very stringent power budgets. The AI domain
@@ -558,46 +554,38 @@ In particular, there are two concerns when using the IEEE-754 floating-point for
 More specifically, 
 
 1.   **Wasted Bit Patterns** 
-    -   32-bit IEEE floating point has around eight million ways to represent NaN (Not-A-Number), while the 64-bit floating point has two quadrillion, which is approximately 2.251x10^15 to be more exact.  A NaN is an exceptional value to represent undefined or invalid results, such as the result of a division by zero.
+    -   32-bit IEEE floating point has around eight million ways to represent NaN (Not-A-Number), while the 64-bit floating point has two quadrillion, which is approximately 2.251x10^15 to be more exact.  A NaN is an exceptional value representing undefined or invalid results, such as the result of a division by zero.
 2.   **Mathematically Incorrect** 
     -   The format specifies two zeroes, a negative and positive zero, with different behaviors. 
     -   Loss of associative and distributive law due to rounding after each operation.  This loss of associative and distributive arithmetic behavior creates an irreproducible result of concurrent programs that use the IEEE floating point.  This is particularly problematic for embedded and control applications.
 3.   **Overflows to ± inf and underflows to 0** 
-    -   Overflowing to ± inf increases the relative error by an infinite factor while underflowing to 0 loses sign information.
+    -   Overflowing to ± inf increases the relative error by an infinite factor, while underflowing to 0 loses sign information.
 4.   **Unused dynamic range** 
     -   The dynamic range of double precision floats is a whopping 2^2047, whereas most numerical software is architected to operate around 1.0.
 5.   **Complicated Circuitry** 
     -   Denormalized floating point numbers have a hidden bit of 0 instead of 1.  This creates a host of special handling requirements that complicate compliant hardware implementations.
 6.   **No Gradual Overflow and Fixed Accuracy** 
-    -   If accuracy is defined as the number of significand bits, IEEE floating-point has fixed accuracy for all numbers except denormalized numbers because the number of signficand digits is fixed.  Denormalized numbers are characterized by decreased significand digits when the value approaches zero due to having a zero hidden bit.  Denormalized numbers fill the underflow gap (i.e., between zero and the least non-zero values).  The counterpart for gradual underflow is gradual overflow which does not exist in IEEE floating points.
+    -   If accuracy is defined as the number of significand bits, IEEE floating-point has fixed accuracy for all numbers except denormalized numbers because the number of signficand digits is fixed.  Denormalized numbers are characterized by decreased significand digits when the value approaches zero due to having a zero hidden bit.  Denormalized numbers fill the underflow gap (i.e., between zero and the least non-zero values).  The counterpart for gradual underflow is gradual overflow, which does not exist in IEEE floating points.
 
 In contrast, the _posit_ number system was designed to overcome these negatives: 
 
 1.   **Economical** 
     -   No bit patterns are redundant.  There is one representation for infinity denoted as ± inf and zero.  All other bit patterns are valid distinct non-zero real numbers. ± inf serves as a replacement for NaN.
 2.   **Preserves Mathematical Properties** 
-    -   There is only one representation for zero, and the encoding is symmetric around 1.0.  Associative and distributive laws are supported through deferred rounding via the quire, enabling reproducible linear algebra algorithms in any concurrency environment.
+    There is only one representation for zero, and the encoding is symmetric around 1.0. Deferred rounding via the quire supports associative and distributive laws, enabling reproducible linear algebra algorithms in any concurrency environment.
 3.   **Tapered Accuracy** 
     -   Tapered accuracy is when values with small exponents have more precision and values with large exponents have fewer digits of accuracy.  This concept was first introduced by Morris (1971) in his paper ”Tapered Floating Point: A New Floating-Point Representation”.
 4.   **Parameterized precision and dynamic range** 
     -   posits are defined by a size, _nbits_, and the number of exponent bits, _es_. This enables system designers the freedom to pick the right precision and dynamic range required for the application.  For example, we may pick 5- or 6-bit posits without any exponent bits for AI applications to improve performance.  For embedded DSP applications, such as 5G base stations, we may select a 16-bit posit with one exponent bit to improve performance per Watt.
 5.   **Simpler Circuitry** 
-    -   There are only two exceptional cases, Not a Real and Zero.  No denormalized numbers, overflow, or underflow. 
+    -   There are only two exceptional cases, Not a Real and Zero.  There are no denormalized numbers, overflow, or underflow. 
 
-However as Deep Learning has demonstrated, there are many different requirements to optimize an arithmetic and
-tailor it to the needs of the application. Universal brings all the machinery together to experiment to 
-facilitate efficient contrast and compare different arithmetic number system designs, before committing them
-to hardware.
+However, as Deep Learning has demonstrated, there are many different requirements for optimizing arithmetic and tailoring it to the application's needs. Universal brings all the machinery together to experiment to facilitate efficient contrast and comparison of different arithmetic number system designs before committing them to hardware.
 
 ## Goals of the library
 
-The *Universal* library started as a bit-level arithmetic reference implementation of the evolving unum Type III 
-(posit and valid) standard. However, the demands for supporting number systems, such as adaptive-precision integers 
-to solve large factorials, adaptive-precision floats to act as Oracles, or comparing linear and tapered floats 
-provided the opportunity to create a complete platform for numerical analysis and computational mathematics. 
-With this *Universal* platform, we enable a new direction for optimizing algorithms to take advantage of mixed-precision 
-computation to maximize performance and minimize energy demands. Energy efficiency is going to be the
-key differentiator for embedded intelligence applications.
+The *Universal* library started as a bit-level arithmetic reference implementation of the evolving unum Type III (posit and valid) standard. However, the demands for supporting number systems, such as adaptive-precision integers to solve large factorials, adaptive-precision floats to act as Oracles, or comparing linear and tapered floats provided the opportunity to create a complete platform for numerical analysis and computational mathematics. 
+With this *Universal* platform, we enable a new direction for optimizing algorithms to take advantage of mixed-precision computation to maximize performance and minimize energy demands. Energy efficiency is going to be the key differentiator for embedded intelligence applications.
 
 As a reference library, *Universal* offers an extensive test infrastructure to validate number system 
 arithmetic operations, and there is a host of utilities to inspect the internal encodings and operations 
@@ -612,6 +600,7 @@ the *Universal* library is encouraged.
 We are happy to accept pull requests via GitHub. The only requirement is that the entire regression test suite passes.
 
 [![Stargazers over time](https://starchart.cc/stillwater-sc/universal.svg)](https://starchart.cc/stillwater-sc/universal)
+
 
 ## Verification Suite
 
@@ -646,11 +635,7 @@ posit logarithm function validation: PASS
 ## Structure of the tree
 
 The universal library contains a set of functional groups to organize the development and validation of 
-different number systems. Each number system type has a single include file that brings together
-the arithmetic number type and all the extensions that *Universal* has standardized so that
-working with numeric types is more productive. For example, facilities for number traits, an 
-arithmetic exception hierarchy, number system attributes, manipulators,
-and finally, a math library specialized for the type.
+different number systems. Each number system type has a single include file that combines the arithmetic number type and all the extensions that *Universal* has standardized to make working with numeric types more productive. For example, facilities for number traits, an arithmetic exception hierarchy, number system attributes, manipulators, and a math library specialized for the type.
 
 The number system types are categorized as _static_ or _elastic_. Static types are arithmetic types
 that have a constant, that is _static_ size, and thus can be used for sharing composite data structures, 
@@ -691,17 +676,17 @@ Here is a complete list:
 - *universal/number/quire* - arbitrary configuration fixed-size super accumulator number system (add/sub/abs/sqrt)
 - *universal/number/float* - contains the implementation of the IEEE floating point augmentations for reproducible computation
 
-And each of these functionality groups has an associated test suite located in ".../universal/tests/..."
+And each of these functionality groups has an associated test suite in ".../universal/tests/..."
 
 
 ## Background information
 
-Universal numbers, unums for short, express real numbers and ranges of real numbers. There are two modes of operation, selectable by the programmer, _posit_ mode and _valid_ mode.
+Universal numbers, or unums for short, express real numbers and ranges of real numbers. The programmer selects two modes of operation: _posit_ mode and _valid_ mode.
 
 In _posit_ mode, a unum behaves like a floating-point number of fixed size, rounding to the nearest expressible value if the result of a calculation is not expressible exactly.
 A posit offers more accuracy and a wider dynamic range than floats with the same number of bits.
 
-In _valid_ mode, a unum represents a range of real numbers and can be used to bound answers rigorously, much as interval arithmetic does.
+In _valid_ mode, a unum represents a range of real numbers and can be used to bound answers rigorously, much like interval arithmetic.
 
 Posit configurations have a specific relationship to one another. When expanding a posit, the new value falls 'between' the old values of the smaller posit. The new value is the arithmetic mean of the two numbers if the expanding bit is a fraction bit, and it is the geometric mean of the two numbers if the expanding bit is a regime or exponent bit. 
 This [page](docs/PositRefinementViz.md) shows a visualization of the expansion of _posit<2,0>_ to _posit<7,1>_:
@@ -724,22 +709,22 @@ The unum format is a public domain specification and a collection of web resourc
 
 [Matrix Template Library](http://simunova.com/#en-mtl4-index-html)
 
-The Matrix Template Library incorporates modern C++ programming techniques to provide an easy and intuitive interface to users while enabling optimal performance. The natural mathematical notation in MTL4 empowers all engineers and scientists to implement their algorithms and models in minimal time. All technical aspects are encapsulated in the library. Think of it as MATLAB for applications.
+The Matrix Template Library incorporates modern C++ programming techniques to provide users with an easy and intuitive interface while enabling optimal performance. The natural mathematical notation in MTL4 empowers all engineers and scientists to implement their algorithms and models in minimal time. All technical aspects are encapsulated in the library. Think of it as MATLAB for applications.
 
 [G+SMO](http://gs.jku.at/gismo) 
 
-G+Smo (Geometry + Simulation Modules, pronounced "gismo") is a new open-source C++ library that brings together mathematical tools for geometric design and numerical simulation. It is developed mainly by researchers and PhD students. It implements the relatively new paradigm of isogeometric analysis, which suggests the use of a unified framework in the design and analysis pipeline. G+Smo is an object-oriented, cross-platform, template C++ library and follows the generic programming principle, with a focus on both efficiency and ease of use. The library is partitioned into smaller entities, called modules. Examples of available modules include the dimension-independent NURBS module, the data fitting and solid segmentation module, the PDE discretization module and the adaptive spline module, based on hierarchical splines of arbitrary dimension and polynomial degree. 
+G+Smo (Geometry + Simulation Modules, pronounced "gismo") is a new open-source C++ library that combines mathematical tools for geometric design and numerical simulation. It is developed mainly by researchers and PhD students. It implements the relatively new paradigm of isogeometric analysis, which suggests using a unified framework in the design and analysis pipeline. G+Smo is an object-oriented, cross-platform, template C++ library that follows the generic programming principle, focusing on efficiency and ease of use. The library is partitioned into smaller entities called modules. Examples of available modules include the dimension-independent NURBS module, the data fitting and solid segmentation module, the PDE discretization module, and the adaptive spline module, based on hierarchical splines of arbitrary dimension and polynomial degree. 
 
 [FEniCS](https://fenicsproject.org/)
 
-FEniCS is a popular open-source (LGPLv3) computing platform for solving partial differential equations (PDEs). FEniCS enables users to quickly translate scientific models into efficient finite element code. With the high-level Python and C++ interfaces to FEniCS, it is easy to get started, but FEniCS offers also powerful capabilities for more experienced programmers. FEniCS runs on a multitude of platforms ranging from laptops to high-performance clusters.
+FEniCS is a popular open-source (LGPLv3) computing platform for solving partial differential equations (PDEs). FEniCS enables users to quickly translate scientific models into efficient finite element code. With the high-level Python and C++ interfaces to FEniCS, it is easy to get started, but FEniCS also offers powerful capabilities for more experienced programmers. FEniCS runs on a multitude of platforms ranging from laptops to high-performance clusters.
 
 
 [ODEINT-v2](http://headmyshoulder.github.io/odeint-v2/)
 
-Odeint is a modern C++ library for numerically solving Ordinary Differential Equations. It is developed in a generic way using Template Metaprogramming which leads to extraordinary high flexibility at top performance. The numerical algorithms are implemented independently of the underlying arithmetics. This results in an incredible applicability of the library, especially in non-standard environments. For example, odeint supports matrix types, arbitrary precision arithmetics and even can be easily run on CUDA GPUs.
+Odeint is a modern C++ library for numerically solving Ordinary Differential Equations. It is developed in a generic way using Template Metaprogramming, which leads to extraordinarily high flexibility at top performance. The numerical algorithms are implemented independently of the underlying arithmetics. This results in an incredible applicability of the library, especially in non-standard environments. For example, odeint supports matrix types, arbitrary precision arithmetics and even can be easily run on CUDA GPUs.
 
-Several AI and Deep Learning libraries are being reengineered to enable the use of posits for both training and inference. They will be announced as they are released.
+Several AI and Deep Learning libraries are being re-engineered to enable posits for both training and inference. They will be announced as they are released.
 
 
 ## License
