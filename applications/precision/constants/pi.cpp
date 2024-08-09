@@ -1,6 +1,7 @@
 // pi.cpp: generating a 'perfect' approximation of pi for a given number system
 //
 // Copyright (C) 2017 Stillwater Supercomputing, Inc.
+// SPDX-License-Identifier: MIT
 //
 // This file is part of the universal numbers project, which is released under an MIT Open Source license.
 #include <universal/utility/directives.hpp>
@@ -38,7 +39,7 @@ Now let's look at the main discoveries in this area:
 
 Viete's Series
 The first infinite sequence discovered in Europe was an infinite product,
-found by French mathematician François Viète in 1593:
+found by French mathematician Francois Viete in 1593:
 
 2    sqrt(2)   sqrt(2 + sqrt(2))   sqrt(2 + sqrt(2 + sqrt(2)))
 -  = ------- * ----------------- * --------------------------- * ...
